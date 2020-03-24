@@ -1,4 +1,4 @@
-package objects;
+package model;
 
 public class Country {
 	private String code;
