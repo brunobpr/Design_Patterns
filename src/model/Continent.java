@@ -2,7 +2,7 @@ package model;
 
 
 /*
- * @Author Bruno Ribeiro
+ * @Author Bruno Ribeiro - 2017138
  * @Collaborator Amilcar Aponte 
  * 
  * An ENUM to guarantee that the value of the continent

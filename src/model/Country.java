@@ -1,5 +1,12 @@
 package model;
 
+/*
+ * @Author Bruno Ribeiro - 2017138
+ * @Collaborator Amilcar Aponte
+ * 
+ * This class uses the Builder pattern to create a new country
+ * 
+*/
 public class Country {
 	private String code;
 	private String name;
@@ -7,6 +14,8 @@ public class Country {
 	private float surfaceArea;
 	private String headOfState;
 	
+	//Private constructor, the client is only allowed to create 
+	//a country through the country builder
 	private Country(CountryBuilder countryBuilder) {
 		this.code = countryBuilder.code;
 		this.name = countryBuilder.name;
@@ -15,7 +24,7 @@ public class Country {
 		this.headOfState = countryBuilder.headOfState;
 	}
 	
-	
+	//This method will generate a well formated print statement with information regarding the country
 	@Override
 	public String toString() {
 		return "Code: " + getCode() + " | Name: " + getName() 
@@ -26,40 +35,28 @@ public class Country {
 		;
 	}
 	
+	//START of getters---------------------------------
+	public String getCode() { return code; }
+	public String getName() { return name; }
+	public Continent getContinent() {return continent;}
+	public float getSurfaceArea() {return surfaceArea;}
+	public String getHeadOfState() {return headOfState; }
+	//END  of getters---------------------------------
 	
 	
 	
-	
-	public String getCode() {
-		return code;
-	}
-
-
-	public String getName() {
-		return name;
-	}
-
-
-	public Continent getContinent() {
-		return continent;
-	}
-
-
-	public float getSurfaceArea() {
-		return surfaceArea;
-	}
-
-
-	public String getHeadOfState() {
-		return headOfState;
-	}
-
+	//The 
 	public static class CountryBuilder {
 		private String code;
 		private String name;
 		private Continent continent;
 		private float surfaceArea;
 		private String headOfState;
+		
+		public CountryBuilder(String code, String name) {
+			this.code = code;
+			this.name = name;
+		}
 		
 		public CountryBuilder setCode(String code) {
 			this.code = code;
