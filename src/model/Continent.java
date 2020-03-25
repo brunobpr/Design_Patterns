@@ -27,11 +27,12 @@ public enum Continent {
 		 this.continent =  continent;
 	}
 	
-	public String getContinent() {
-		return this.continent;
-	}
 	@Override
 	public String toString() {
 		return this.continent;
 	}
+	
+	
+	
+	
 }

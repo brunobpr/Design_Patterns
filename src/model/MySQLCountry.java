@@ -77,7 +77,7 @@ public class MySQLCountry implements CountryDAO{
 						.setSurfaceArea(surfaceArea)
 						.setHeadOfState(headOfState)
 						.build();
-						return country;
+			return country;
 		}catch(SQLException sql){
 			System.out.println(sql.getMessage());
 			return null;
@@ -86,8 +86,18 @@ public class MySQLCountry implements CountryDAO{
 
 	@Override
 	public boolean addNewCountry(Country country) {
-		// TODO Auto-generated method stub
-		return false;
+		code = country.getCode();
+		name = country.getName();
+		continent = country.getContinent();
+		surfaceArea = country.getSurfaceArea();
+		headOfState = country.getHeadOfState();
+		return db.insertQuery("INSERT INTO country (code, name, continent, surfaceArea, headOfState) VALUES ('"
+				+ code + "', '"
+				+ name + "', '"
+				+ continent + "', '"
+				+ surfaceArea + "', '"
+				+ headOfState + "');");
+		
 	}
 
 }

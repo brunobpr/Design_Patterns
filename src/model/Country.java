@@ -35,6 +35,7 @@ public class Country {
 		;
 	}
 	
+
 	//START of getters---------------------------------
 	public String getCode() { return code; }
 	public String getName() { return name; }
@@ -53,9 +54,11 @@ public class Country {
 		private float surfaceArea;
 		private String headOfState;
 		
-		public CountryBuilder(String code, String name, Continent continent2, float surfaceArea2) {
+		public CountryBuilder(String code, String name, Continent continent, float surfaceArea) {
 			this.code = code;
 			this.name = name;
+			this.continent = continent;
+			this.surfaceArea = surfaceArea;
 		}
 		public CountryBuilder() {}
 		

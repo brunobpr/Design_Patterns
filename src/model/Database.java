@@ -19,7 +19,6 @@ public enum Database {
 		private ResultSet resultSet;
 		
 		private Database () {
-			Connection conn;
 			try {
 				conn = DriverManager.getConnection( server, user, password );
 			    stmt = conn.createStatement() ;
@@ -50,10 +49,15 @@ public enum Database {
 			
 		}
 		
-		public void close() throws SQLException{
-			resultSet.close();
-			stmt.close();
-			conn.close();
+		public void close() {try {
+				resultSet.close();
+				conn.close();
+				stmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 		
 		public ResultSet getResult() {
