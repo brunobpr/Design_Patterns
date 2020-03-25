@@ -33,13 +33,28 @@ public enum Database {
 	
 		public ResultSet selectQuery(String query) {
 			try {
-				this.resultSet = stmt.executeQuery( query ) ;
+				resultSet = stmt.executeQuery( query ) ;
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			return this.resultSet;
+			return resultSet;
 		}
 		
+		public boolean insertQuery(String query) {
+			try {
+				return stmt.execute( query ) ;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return false;
+			}
+			
+		}
+		
+		public void close() throws SQLException{
+			resultSet.close();
+			stmt.close();
+			conn.close();
+		}
 		
 		public ResultSet getResult() {
 			return resultSet;

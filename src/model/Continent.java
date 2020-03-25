@@ -14,20 +14,22 @@ public enum Continent {
 	
 	ASIA("Asis"),
 	EUROPE("Europe"),
-	NORTHAMERICA("North America"),
+	NORTH_AMERICA("North America"),
 	AFRICA("Africa"),
 	OCEANIA("Oceania"),
 	ANTARCTICA("Antarctica"),
-	SOUTHAMERICA("South America");
+	SOUTH_AMERICA("South America");
 	
 	
 	private final String continent;
 	
 	private Continent(String continent) {
-		this.continent = continent;
+		 this.continent =  continent;
 	}
 	
-	
+	public String getContinent() {
+		return this.continent;
+	}
 	@Override
 	public String toString() {
 		return this.continent;

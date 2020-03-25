@@ -27,11 +27,11 @@ public class Country {
 	//This method will generate a well formated print statement with information regarding the country
 	@Override
 	public String toString() {
-		return "Code: " + getCode() + " | Name: " + getName() 
+		return "Code:   " + getCode() + " | Name: " + getName() 
 				+ "\nContinent     : " + getContinent()
 				+ "\nSurface Area  : " + getSurfaceArea()
 				+ "\nHead of State : " + getHeadOfState()
-				+ "\n________________________________________"
+				+ "\n________________________________________\n"
 		;
 	}
 	
@@ -53,7 +53,7 @@ public class Country {
 		private float surfaceArea;
 		private String headOfState;
 		
-		public CountryBuilder(String code, String name) {
+		public CountryBuilder(String code, String name, Continent continent2, float surfaceArea2) {
 			this.code = code;
 			this.name = name;
 		}
