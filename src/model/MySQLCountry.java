@@ -41,7 +41,6 @@ public class MySQLCountry implements CountryDAO{
 	@Override
 	public Country findCountryByName(String name) {
 		Country country;
-		
 		try{
 			db.selectQuery("SELECT * FROM country WHERE name='"+name+"';").next();
 			code = db.getResult().getString(1);
@@ -64,8 +63,25 @@ public class MySQLCountry implements CountryDAO{
 
 	@Override
 	public Country findCountryByCode(String code) {
-		// TODO Auto-generated method stub
-		return null;
+		Country country;
+		try{
+			db.selectQuery("SELECT * FROM country WHERE code='"+code+"';").next();
+			name = db.getResult().getString(2);
+			continent = Continent.valueOf(db.getResult().getString(3).toUpperCase().replace(" ", "_"));
+			surfaceArea = db.getResult().getFloat(4);
+			headOfState = db.getResult().getString(5);
+			country = new Country.CountryBuilder()
+						.setCode(code)
+						.setName(name)
+						.setContinent(continent)
+						.setSurfaceArea(surfaceArea)
+						.setHeadOfState(headOfState)
+						.build();
+						return country;
+		}catch(SQLException sql){
+			System.out.println(sql.getMessage());
+			return null;
+		}
 	}
 
 	@Override

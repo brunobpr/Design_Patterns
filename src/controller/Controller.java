@@ -9,7 +9,7 @@ public class Controller {
 		
 		MySQLCountry c = new MySQLCountry() ;
 	
-		System.out.println(c.findCountryByName("Brazil"));
+		System.out.println(c.findCountryByCode("USA"));
 	}
 	
 	

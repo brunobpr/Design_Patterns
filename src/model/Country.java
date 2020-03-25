@@ -27,7 +27,7 @@ public class Country {
 	//This method will generate a well formated print statement with information regarding the country
 	@Override
 	public String toString() {
-		return "Code:" + getCode() + "      | Name: " + getName() 
+		return "Code: " + getCode() + "     | Name: " + getName() 
 				+ "\nContinent     : " + getContinent()
 				+ "\nSurface Area  : " + getSurfaceArea()
 				+ "\nHead of State : " + getHeadOfState()
