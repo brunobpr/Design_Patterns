@@ -12,7 +12,7 @@ package model;
 public enum Continent {
 	
 	
-	ASIA("Asis"),
+	ASIA("Asia"),
 	EUROPE("Europe"),
 	NORTH_AMERICA("North America"),
 	AFRICA("Africa"),
@@ -34,7 +34,4 @@ public enum Continent {
 	public String toString() {
 		return this.continent;
 	}
-	
-	
-	
 }
