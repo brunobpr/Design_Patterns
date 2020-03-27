@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.SQLException;
 import model.*;
+import model.Country.CountryBuilder;
 import view.*;
 
 public class Controller {
@@ -40,7 +41,7 @@ public class Controller {
 			case "3":
 				countryByCode();
 			case "4":
-				
+				addCountry();
 			case "0":
 				System.exit(0);;
 		};
@@ -75,5 +76,26 @@ public class Controller {
 		menu.showCountry(sqlCountry.findCountryByCode(code), code);
 		getMenuOption();
 	}
+	
+	public void addCountry() {	
+		System.out.println("Add a new country");
+		System.out.print("Code: ");	
+		String code = getInput();
+		System.out.print("Name: ");	
+		String name = getInput();
+		System.out.print("Continent: ");	
+		Continent continent = Continent.valueOf((getInput()).toUpperCase().replace(" ", "_"));
+		System.out.print("Surface area: ");	
+		Float surfaceArea = Float.valueOf(getInput());
+		System.out.print("Head of state: ");	
+		String headOfState = getInput();
+		CountryBuilder countryBuilder = new CountryBuilder(code, name, continent, surfaceArea);
+		if(headOfState != null) {
+			countryBuilder.setHeadOfState(headOfState);
+		}
+		sqlCountry.addNewCountry(countryBuilder.build());
+		getMenuOption();
+	}
+	
 	
 }

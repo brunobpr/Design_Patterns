@@ -19,7 +19,8 @@ public class MenuView {
 		System.out.println("Please, choose one option:");
 		System.out.println("| 1 | - List all countries");
 		System.out.println("| 2 | - Find a country by country code");
-		System.out.println("| 3 | - Find a country by name");		
+		System.out.println("| 3 | - Find a country by name");
+		System.out.println("| 4 | - Add a new country");
 		System.out.println("| 5 | - Exit");	
 	}
 
