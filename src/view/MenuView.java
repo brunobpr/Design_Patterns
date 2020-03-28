@@ -18,8 +18,8 @@ public class MenuView {
 	public void options() {
 		System.out.println("Please, choose one option:");
 		System.out.println("| 1 | - List all countries");
-		System.out.println("| 2 | - Find a country by country code");
-		System.out.println("| 3 | - Find a country by name");
+		System.out.println("| 2 | - Find a country by name");
+		System.out.println("| 3 | - Find a country by code");
 		System.out.println("| 4 | - Add a new country");
 		System.out.println("| 5 | - Exit");	
 	}
@@ -32,11 +32,14 @@ public class MenuView {
 		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	}
 
-	public void showAllContries(ArrayList<Country> countries) {
+	public void showCountriesList(ArrayList<Country> countries) {
 		clean();
-		System.out.println("List of All Countries");
+		System.out.println("Number of countries found: " + countries.size());
+		int counter = 1;
 		for(Country country : countries) {
+			System.out.println("------------------["+counter+"]------------------");
 			System.out.println(country);
+			counter++;
 		}
 	}
 
@@ -48,5 +51,18 @@ public class MenuView {
 			System.out.println(country);
 		}
 		else System.out.println(countrySearched + " does not exist!\n");
+	}
+	
+	public void displayContinents() {
+		divider();
+		System.out.println("Continent not valid!\nChoose one: ");
+		System.out.println("Asia");
+		System.out.println("Europe");
+		System.out.println("North America");
+		System.out.println("South America");
+		System.out.println("Africa");	
+		System.out.println("Oceania");
+		System.out.println("Antarctica");
+		divider();
 	}
 }

@@ -54,11 +54,10 @@ public class Country {
 		private float surfaceArea;
 		private String headOfState;
 		
-		public CountryBuilder(String code, String name, Continent continent, float surfaceArea) {
+		public CountryBuilder(String code, String name, Continent continent) {
 			this.code = code;
 			this.name = name;
 			this.continent = continent;
-			this.surfaceArea = surfaceArea;
 		}
 		public CountryBuilder() {}
 		

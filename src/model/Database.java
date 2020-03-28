@@ -34,7 +34,7 @@ public enum Database {
 			try {
 				resultSet = stmt.executeQuery( query ) ;
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Try again!\n" + e.getMessage());
 			}
 			return resultSet;
 		}
@@ -43,7 +43,7 @@ public enum Database {
 			try {
 				return stmt.execute( query ) ;
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Try again!\n" + e.getMessage());
 				return false;
 			}
 			

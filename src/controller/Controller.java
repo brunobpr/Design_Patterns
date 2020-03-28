@@ -11,22 +11,15 @@ public class Controller {
 	
 	private MenuView menu;
 	private BufferedReader reader;
-	private MySQLCountry sqlCountry;
+	private MySQLCountryDAO sqlCountry;
 	private Database database = Database.getInstance();
+	private Validator validator = Validator.getInstance();
 	
 	public Controller() {
-		/*Database database = Database.getInstance();
-		Continent cont =  Continent.AFRICA;
-		Country c = new Country.CountryBuilder("ARL", "Andromeda", cont, 349851).setHeadOfState("Dilmae").build();
-		MySQLCountry sql = new MySQLCountry() ;
-	
-		System.out.println(sql.addNewCountry(c));
-		System.out.println(sql.findCountryByCode("ARL"));*/
-		sqlCountry = new MySQLCountry();
+		sqlCountry = new MySQLCountryDAO();
 		menu = new MenuView();
 		reader = new BufferedReader(new InputStreamReader(System.in));
 		getMenuOption();
-		
 	}
 
 	private void getMenuOption() {
@@ -34,7 +27,7 @@ public class Controller {
 		String optionSelected = getInput();;
 		switch(optionSelected) {
 			case "1":
-				menu.showAllContries(sqlCountry.getCountries());
+				menu.showCountriesList(sqlCountry.getCountries());
 				getMenuOption();
 			case "2":
 				countryByName();
@@ -48,6 +41,97 @@ public class Controller {
 		
 	}
 
+	
+
+	private void countryByCode() {
+		System.out.println("Find a country by code");
+		System.out.print("Code: ");
+		String code = getInput();
+		menu.showCountry(sqlCountry.findCountryByCode(code), code);
+		getMenuOption();
+	}
+	
+	private void countryByName() {
+		System.out.println("Find a country by Name");
+		System.out.print("Name: ");
+		String name = getInput();
+		menu.showCountriesList(sqlCountry.findCountryByName(name));
+		getMenuOption();
+	}
+	
+	
+	
+	public void addCountry() {	
+		System.out.println("Add a new country or type 0 to return.");
+		String code = countryCodeInput();
+		String name = countryNameInput();
+		Continent continent = countryContinentInput();
+		Float surfaceArea = countrySurfaceInput();	
+		String headOfState = countryHeadInput();
+		CountryBuilder countryBuilder = new CountryBuilder(code, name, continent);
+		if(headOfState != null) {
+			countryBuilder.setHeadOfState(headOfState);
+		}
+		if(headOfState != null) {
+			countryBuilder.setSurfaceArea(surfaceArea);
+		}
+		sqlCountry.addNewCountry(countryBuilder.build());
+		getMenuOption();
+	}
+	
+	public String countryCodeInput() {
+		System.out.print("Code: ");	
+		String code = getInput();
+		while(validator.countryCode(code)) {
+			System.out.print("Only letters or numbers. 3 chars long.\nCode: ");	
+			code = getInput();
+		}
+		return code;
+	}
+	
+	public String countryNameInput() {
+		System.out.print("Name: ");	
+		String name = getInput();
+		while(validator.countryName(name)) {
+			System.out.print("Country name not valid!\nName: ");
+			name = getInput();
+		}
+		return name;
+	}
+	
+	public float countrySurfaceInput() {
+		System.out.print("Surface Area: ");	
+		String input = getInput();
+		while(!input.matches("[0-9]+")) {
+			System.out.print("Not a valid number!\nSurface Area: ");
+			input = getInput();
+		}
+		return Float.valueOf(input) ;
+	}
+	
+	public Continent countryContinentInput() {
+		Continent  continent = null;
+		try {
+			System.out.print("Continent:");
+			String input = getInput().toUpperCase().replace(" ", "_");
+		    continent = Continent.valueOf(input);		
+		}catch(IllegalArgumentException e) {
+			menu.displayContinents();
+			return countryContinentInput();
+		}
+		return continent;
+	}
+	
+	public String countryHeadInput() {
+		System.out.print("Head of State: ");	
+		String headOfState = getInput();
+		while(!headOfState.matches("[A-Za-z' ]+")) {
+			System.out.print("This is not a valid name.\nHead of State: ");	
+			headOfState = getInput();
+		}
+		return headOfState;
+	}
+	
 	private String getInput() {
 		String input;
 		try {
@@ -60,42 +144,4 @@ public class Controller {
 		}
 		
 	}
-
-	private void countryByName() {
-		System.out.println("Find a country by Name");
-		System.out.print("Name: ");
-		String name = getInput();
-		menu.showCountry(sqlCountry.findCountryByName(name), name);
-		getMenuOption();
-	}
-	
-	private void countryByCode() {
-		System.out.println("Find a country by code");
-		System.out.print("Code: ");
-		String code = getInput();
-		menu.showCountry(sqlCountry.findCountryByCode(code), code);
-		getMenuOption();
-	}
-	
-	public void addCountry() {	
-		System.out.println("Add a new country");
-		System.out.print("Code: ");	
-		String code = getInput();
-		System.out.print("Name: ");	
-		String name = getInput();
-		System.out.print("Continent: ");	
-		Continent continent = Continent.valueOf((getInput()).toUpperCase().replace(" ", "_"));
-		System.out.print("Surface area: ");	
-		Float surfaceArea = Float.valueOf(getInput());
-		System.out.print("Head of state: ");	
-		String headOfState = getInput();
-		CountryBuilder countryBuilder = new CountryBuilder(code, name, continent, surfaceArea);
-		if(headOfState != null) {
-			countryBuilder.setHeadOfState(headOfState);
-		}
-		sqlCountry.addNewCountry(countryBuilder.build());
-		getMenuOption();
-	}
-	
-	
 }

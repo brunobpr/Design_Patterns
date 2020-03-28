@@ -19,7 +19,7 @@ public interface CountryDAO {
 	 * @param name The name of the country to be found
 	 * @return the country of the given name, or null if there is no country
 	 */
-	public Country findCountryByName(String name);
+	public ArrayList<Country> findCountryByName(String name);
 	
 	
 	/**

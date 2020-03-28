@@ -20,7 +20,6 @@ public enum Continent {
 	ANTARCTICA("Antarctica"),
 	SOUTH_AMERICA("South America");
 	
-	
 	private final String continent;
 	
 	private Continent(String continent) {
