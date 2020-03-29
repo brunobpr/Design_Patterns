@@ -22,6 +22,10 @@ public enum Continent {
 	
 	private final String continent;
 	
+	
+	/**
+	 * @param continent a string corresponding to a Continent ENUM
+	 */
 	private Continent(String continent) {
 		 this.continent =  continent;
 	}

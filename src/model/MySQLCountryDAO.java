@@ -71,9 +71,10 @@ public class MySQLCountryDAO implements CountryDAO {
 			continent = Continent.valueOf(db.getResult().getString(3).toUpperCase().replace(" ", "_"));
 			surfaceArea = db.getResult().getFloat(4);
 			headOfState = db.getResult().getString(5);
-			country = new Country.CountryBuilder().setCode(code).setName(name).setContinent(continent)
-					.setSurfaceArea(surfaceArea).setHeadOfState(headOfState).build();
-			return country;
+			Country.CountryBuilder countryBuilder = new Country.CountryBuilder(code, name, continent);
+			
+			countryBuilder.setSurfaceArea(surfaceArea).setHeadOfState(headOfState);
+			return countryBuilder.build();
 		} catch (SQLException sql) {
 			System.out.println(sql.getMessage());
 			return null;
