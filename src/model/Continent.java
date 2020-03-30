@@ -1,6 +1,5 @@
 package model;
 
-
 /*
  * @Author Bruno Ribeiro - 2017138
  * @Collaborator Amilcar Aponte 
@@ -10,32 +9,23 @@ package model;
 */
 
 public enum Continent {
-	
-	
-	ASIA("Asia"),
-	EUROPE("Europe"),
-	NORTH_AMERICA("North America"),
-	AFRICA("Africa"),
-	OCEANIA("Oceania"),
-	ANTARCTICA("Antarctica"),
-	SOUTH_AMERICA("South America");
-	
+
+	ASIA("Asia"), EUROPE("Europe"), NORTH_AMERICA("North America"), AFRICA("Africa"), OCEANIA("Oceania"), ANTARCTICA(
+			"Antarctica"), SOUTH_AMERICA("South America");
+
 	private final String continent;
-	
-	
+
 	/**
-	 * @param continent a string corresponding to a Continent ENUM
+	 * @param continent
+	 *            a string corresponding to a Continent ENUM
 	 */
 	private Continent(String continent) {
-		 this.continent =  continent;
+		this.continent = continent;
 	}
-	
+
 	@Override
 	public String toString() {
 		return this.continent;
 	}
-	
-	
-	
-	
+
 }
