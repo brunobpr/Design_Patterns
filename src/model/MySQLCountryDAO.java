@@ -60,7 +60,7 @@ public class MySQLCountryDAO implements CountryDAO {
 		// project)
 		// So we need to retun a array list, null, with one or muiltiple countries
 		ArrayList<Country> countriesList = new ArrayList<Country>();
-		db.selectQuery("SELECT * FROM country WHERE name='" + name + "';");
+		db.selectQuery("SELECT * FROM country WHERE name LIKE '%" + name + "%';");
 		try {
 			while (db.getResult().next()) {
 				// Getting the info from the country table and storing onto the variables

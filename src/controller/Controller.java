@@ -53,6 +53,7 @@ public class Controller {
 			case "4":
 				addCountry();
 			case "0":
+				Database.instance.close();
 				System.exit(0);;
 			default:
 				System.out.println("Option not available! 0-5");
