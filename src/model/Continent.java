@@ -3,6 +3,7 @@ package model;
 /*
  * @Author Bruno Ribeiro - 2017138
  * @Collaborator Amilcar Aponte 
+ * https://github.com/brunobpr/Design_Patterns
  * 
  * An ENUM to guarantee that the value of the continent
  * matches the options on the database

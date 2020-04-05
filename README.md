@@ -12,12 +12,15 @@ You have been provided with access to a real database server that contains only 
 * Retrieve records by country code
 * Add new records into the database
 
-## Specific Requirements
-* You are required to implement the Data Access Object pattern, in combination with any other two creational patterns of your choice.
-* You also have to create a simple CLI client program to test your implementation of the patterns.
-* The client program should not have any direct contact with the database and should pass and receive data in the form of objects (instances of a Country class).
+## Patterns Used
+### Singleton
+*Database connection, for this CA there was only one class acessing the databae, but in a larger project, avoiding creating new instances of the database everytime the connection is needed could result in a waste of resources. That's why using Singleton pattern is the best approach for this scenario. 
 
+### Builder
+*The biggest advantage of using this pattern to create new country objects is the acceptance of passing paramenters in differente ways and order. 
 
+### Data Access Object
+*When handling retrieving and addind data to an external data storage, DAO avoids that the client side doesn't have direct access to the data. In this case, DAO is in chage of creating operations that will be done on the database.
 
 
  

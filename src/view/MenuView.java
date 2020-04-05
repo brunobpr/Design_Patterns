@@ -6,6 +6,7 @@ import model.Country;
 /*
  * @Author Bruno Ribeiro
  * @Collaborator Amilcar Aponte
+ * https://github.com/brunobpr/Design_Patterns
  * 
  * The only purpose of this class is to print info to the console
  * Including menu items and countries info

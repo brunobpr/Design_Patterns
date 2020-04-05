@@ -11,6 +11,7 @@ import java.util.HashMap;
 /*
  * @Author Bruno Ribeiro - 2017138
  * @Collaborator Amilcar Aponte
+ * https://github.com/brunobpr/Design_Patterns
  * 
  * This Database uses the ENUM Singleton Pattern to create a single instance of the database connection
  * The database is used throughtout the whole program, so there is no need to implement a Lazy Singleton

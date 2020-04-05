@@ -1,5 +1,11 @@
 package model;
 
+/*
+ * @Author Bruno Ribeiro
+ * @Collaborator Amilcar Aponte
+ * https://github.com/brunobpr/Design_Patterns
+*/
+
 public class Validator {
 
 	// This is a Validation class, it might be used for more than on class

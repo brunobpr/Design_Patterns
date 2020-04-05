@@ -3,6 +3,7 @@ package model;
 /*
  * @Author Bruno Ribeiro - 2017138
  * @Collaborator Amilcar Aponte
+ * https://github.com/brunobpr/Design_Patterns
  * 
  * This class follows the Builder Pattern to create a new country
  * The first thing done before creating a Country Class was to analyse the country table on the database

@@ -5,6 +5,9 @@ import controller.Controller;
 /*
  * @Author Bruno Ribeiro - 2017138
  * @Collaborator Amilcar Aponte 
+ * 
+ * https://github.com/brunobpr/Design_Patterns
+ * 
 */
 
 public class Client {

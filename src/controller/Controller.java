@@ -10,6 +10,7 @@ import view.*;
 /*
  * @Author Bruno Ribeiro - 2017138
  * @Collaborator Amilcar Aponte 
+ * https://github.com/brunobpr/Design_Patterns
  * This is the controller class, it is works as a bridge between models and views
  * It is the only class that have access to those packages
 */

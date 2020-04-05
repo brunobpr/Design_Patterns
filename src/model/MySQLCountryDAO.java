@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 /*	@Author Bruno Ribeiro
  *	@Collaborator Amilcar Aponte
+ *   https://github.com/brunobpr/Design_Patterns
  */
 public class MySQLCountryDAO implements CountryDAO {
 
