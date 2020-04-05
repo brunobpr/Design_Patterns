@@ -9,12 +9,7 @@ import java.util.ArrayList;
 public class MySQLCountryDAO implements CountryDAO {
 
 	Database db = Database.getInstance();
-	String name;
-	String code;
-	float surfaceArea;
-	String headOfState;
-	Continent continent;
-
+	
 	@Override
 	public ArrayList<Country> getCountries() {
 		ArrayList<Country> countriesList = new ArrayList<Country>();
@@ -29,14 +24,14 @@ public class MySQLCountryDAO implements CountryDAO {
 			// the countriesList.
 			while (db.getResult().next()) {
 				// Getting the info from the country table and storing onto the variables
-				code = db.getResult().getString(1);
-				name = db.getResult().getString(2);
+				String code = db.getResult().getString(1);
+				String name = db.getResult().getString(2);
 				// Converting the cont string to the same format of the ENUM
 				// eg: south america is converted to SOUTH_AMERICA
 				String cont = db.getResult().getString(3).toUpperCase().replace(" ", "_");
-				continent = Continent.valueOf(cont);
-				surfaceArea = db.getResult().getFloat(4);
-				headOfState = db.getResult().getString(5);
+				Continent continent = Continent.valueOf(cont);
+				float surfaceArea = db.getResult().getFloat(4);
+				String headOfState = db.getResult().getString(5);
 				// The country object doesn't have too many attributes
 				// There isn't a huge difference between using constructors or methods.
 				Country.CountryBuilder countryBuilder = new Country.CountryBuilder().setCode(code).setName(name)
@@ -64,13 +59,12 @@ public class MySQLCountryDAO implements CountryDAO {
 		try {
 			while (db.getResult().next()) {
 				// Getting the info from the country table and storing onto the variables
-				code = db.getResult().getString(1);
-				name = db.getResult().getString(2);
+				String code = db.getResult().getString(1);
 				// Converting the string to the same format of the ENUM
 				// eg: south america is converted to SOUTH_AMERICA
-				continent = Continent.valueOf(db.getResult().getString(3).toUpperCase().replace(" ", "_"));
-				surfaceArea = db.getResult().getFloat(4);
-				headOfState = db.getResult().getString(5);
+				Continent continent = Continent.valueOf(db.getResult().getString(3).toUpperCase().replace(" ", "_"));
+				float surfaceArea = db.getResult().getFloat(4);
+				String headOfState = db.getResult().getString(5);
 				// The country object doesn't have too many attributes
 				// There isn't a huge difference between using constructors or methods.
 				Country.CountryBuilder countryBuilder = new Country.CountryBuilder(code, name, continent);
@@ -94,12 +88,12 @@ public class MySQLCountryDAO implements CountryDAO {
 		try {
 			// Getting the info from the country table and storing onto the variables
 			db.selectQuery("SELECT * FROM country WHERE code='" + code + "';").next();
-			name = db.getResult().getString(2);
+			String name = db.getResult().getString(2);
 			// Converting the string to the same format of the ENUM
 			// eg: south america is converted to SOUTH_AMERICA
-			continent = Continent.valueOf(db.getResult().getString(3).toUpperCase().replace(" ", "_"));
-			surfaceArea = db.getResult().getFloat(4);
-			headOfState = db.getResult().getString(5);
+			Continent continent = Continent.valueOf(db.getResult().getString(3).toUpperCase().replace(" ", "_"));
+			float surfaceArea = db.getResult().getFloat(4);
+			String headOfState = db.getResult().getString(5);
 			// The country object doesn't have too many attributes
 			// There isn't a huge difference between using constructors or methods.
 			Country.CountryBuilder countryBuilder = new Country.CountryBuilder(code, name, continent);
@@ -116,12 +110,11 @@ public class MySQLCountryDAO implements CountryDAO {
 	@Override
 	public boolean addNewCountry(Country country) {
 		// Getting the values from the country object
-		code = country.getCode();
-		name = country.getName();
-		continent = country.getContinent();
-		System.out.println(continent);
-		surfaceArea = country.getSurfaceArea();
-		headOfState = country.getHeadOfState();
+		String code = country.getCode();
+		String name = country.getName();
+		Continent continent = country.getContinent();
+		float surfaceArea = country.getSurfaceArea();
+		String headOfState = country.getHeadOfState();
 		// Execute the insert query, it returns a boolean value to verify if the
 		// insertion was successfull
 		return db.insertQuery("INSERT INTO country (code, name, continent, surfaceArea, headOfState) VALUES ('" + code

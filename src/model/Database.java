@@ -28,7 +28,9 @@ public enum Database {
 	instance;
 
 	// Setting the given parameters to access the databse
-	private String server = "jdbc:mysql://52.50.23.197:3306/world";
+	// The verifyServerCertificate=false&useSSL=true was added to make the error below disappear
+	// Error: Establishing SSL connection without server's identity verification is not recommended
+	private String server = "jdbc:mysql://52.50.23.197:3306/world?verifyServerCertificate=false&useSSL=true";
 	private String user = "cctstudent";
 	private String password = "Pass1234!";
 	private Connection conn;
